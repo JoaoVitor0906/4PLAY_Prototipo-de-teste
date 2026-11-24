@@ -21,6 +21,7 @@
   };
   var LEAD = { '15': '15 minutos', '30': '30 minutos', '60': '1 hora' };
   var TEAMS = [];
+  var preferencesVersion = 0;
   EV.forEach(function (e) {
     e.title.split(' × ').forEach(function (t) { if (TEAMS.indexOf(t) < 0) TEAMS.push(t); });
   });
@@ -28,6 +29,10 @@
   // ---------- Estado ----------
   var S = { q: '', game: 'Todos', cat: 'Todos', st: 'Todos' }; // busca e filtros
   var P = load(); // preferências do usuário (salvas no navegador)
+
+  function normalizeSaved(saved) {
+    return (Array.isArray(saved) ? saved : []).map(Number).filter(function (id) { return Number.isInteger(id); });
+  }
 
   function load() {
     try {
@@ -37,7 +42,7 @@
         d.token = d.token || null;
         d.games = d.games || [];
         d.teams = d.teams || [];
-        d.saved = d.saved || [];
+        d.saved = normalizeSaved(d.saved);
         d.lead = d.lead || '15';
         return d;
       }
@@ -45,6 +50,7 @@
     return { games: [], teams: [], saved: [], lead: '15', user: null, token: null };
   }
   function save() {
+    preferencesVersion++;
     try {
       localStorage.setItem('4play', JSON.stringify(P));
       syncPreferences();
@@ -69,7 +75,7 @@
   function applyPreferences(preferences) {
     P.games = preferences.games || [];
     P.teams = preferences.teams || [];
-    P.saved = preferences.saved || [];
+    P.saved = normalizeSaved(preferences.saved || []);
     P.lead = preferences.lead || '15';
   }
   function syncPreferences() {
@@ -84,9 +90,10 @@
       renderUserState();
       return;
     }
+    var version = preferencesVersion;
     api('/api/me').then(function (data) {
       P.user = data.user;
-      applyPreferences(data.preferences);
+      if (version === preferencesVersion) applyPreferences(data.preferences);
       localStorage.setItem('4play', JSON.stringify(P));
       renderUserState();
       if (location.hash === '#painel') renderPainel();
