@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>4PLAY – Eventos de e-sports</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap">
+<link rel="stylesheet" href="css/style.css">
+<script src="js/app.js" defer></script>
+</head>
+<body>
+<div class="wrap">
+<header class="nav">
+<a class="logo" href="#inicio">4<b>PLAY</b></a>
+<a class="l" id="n-inicio" href="#inicio">Início</a>
+<a class="l" id="n-explorar" href="#explorar">Explorar</a>
+<a class="l" id="n-painel" href="#painel">Meu painel</a>
+<label class="nav-search" aria-label="Buscar eventos">
+<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+<input id="nav-q" type="search" placeholder="Buscar jogo, equipe ou campeonato" autocomplete="off">
+</label>
+<button class="notify" type="button" aria-label="Notificações" data-toast="Você não tem novas notificações."><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></svg></button>
+<a class="av" id="user-avatar" href="#painel" aria-label="Abrir meu painel">JV</a>
+</header>
+
+<!-- Tela 1: Início (feed de transmissões ao vivo) -->
+<main id="v-inicio">
+<section class="hero" aria-label="Campeonato em destaque">
+<span class="live"><i class="dot"></i>AO VIVO</span>
+<h1>Grande Final Regional de Valorant</h1>
+<p>Nova Esports contra Crimson Five, melhor de 5. Acompanhe a transmissão, a tabela do torneio e as estatísticas das equipes.</p>
+<div class="btns"><a class="btn" href="#partida-1">Assistir agora</a><a class="btn s" href="#explorar">Explorar eventos</a></div>
+</section>
+<div class="sh"><h2>Ao vivo agora</h2><a class="lnk" href="#explorar">Ver todos</a></div>
+<div class="grid" id="home-live"></div>
+<div class="sh"><h2>Próximas partidas</h2><a class="lnk" href="#explorar">Ver no Explorar</a></div>
+<div class="grid" id="home-soon"></div>
+</main>
+
+<!-- Tela 2: Detalhes da partida (preenchida por js/app.js) -->
+<main id="v-partida" hidden></main>
+
+<!-- Tela 3: Explorar (busca com filtros – funcionalidade interativa) -->
+<main id="v-explorar" hidden>
+<h1 class="t">Explorar eventos</h1>
+<p class="sub">Encontre partidas e campeonatos por jogo, categoria ou estado.</p>
+<label class="search">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+<input id="q" type="search" placeholder="Buscar equipe, jogo ou campeonato" aria-label="Buscar eventos" autocomplete="off">
+</label>
+<div class="fg" role="group" aria-label="Filtrar por jogo"><span class="fl">Jogo</span><span id="g-game" style="display:contents"></span></div>
+<div class="fg" role="group" aria-label="Filtrar por categoria"><span class="fl">Categoria</span><span id="g-cat" style="display:contents"></span></div>
+<div class="fg" role="group" aria-label="Filtrar por estado"><span class="fl">Estado</span><span id="g-st" style="display:contents"></span></div>
+<div class="rb"><h2 id="count" aria-live="polite"></h2><button class="lnk" id="reset" hidden>Limpar filtros</button></div>
+<div class="empty" id="empty" hidden>
+<h3>Nenhum evento encontrado para estes filtros</h3>
+<p>Tente outro termo de busca ou remova algum filtro para ver mais partidas.</p>
+<button class="btn" id="reset2">Limpar filtros</button>
+</div>
+<div class="grid" id="results"></div>
+</main>
+
+<!-- Tela 4: Painel do usuário (preenchida por js/app.js) -->
+<main id="v-painel" hidden></main>
+
+<footer class="ft">4PLAY · Protótipo funcional com dados fictícios</footer>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
