@@ -18,6 +18,8 @@ npm.cmd start
 
 Abra [http://localhost:3000](http://localhost:3000) no navegador. Para usar outra porta, defina a variável de ambiente `PORT` antes de iniciar o servidor.
 
+Para encerrar o servidor local, volte ao terminal onde executou `npm.cmd start` e pressione **Ctrl+C**. Fechar a aba do navegador não encerra o servidor.
+
 O banco `4play.sqlite` é criado automaticamente na raiz do projeto quando o servidor inicia. Mantenha esse arquivo para preservar as contas e preferências locais.
 
 ### Se não conseguir criar conta ou entrar
@@ -36,6 +38,39 @@ No PowerShell, `npm.cmd` evita bloqueios da política de execução que podem im
 - **Persistência:** contas, sessões e preferências armazenadas em SQLite; a sessão do navegador é mantida em `localStorage`.
 
 Os eventos e as estatísticas são dados fictícios de demonstração. O link “Esqueci minha senha” exibe o formulário e informa que a recuperação ainda não está ativada; nenhum e-mail é enviado nem senha é alterada.
+
+## Checklist da entrega de IHC
+
+Legenda: `[x]` implementado no protótipo; `[ ]` precisa ser preparado ou concluído para a apresentação.
+
+### O que apresentar
+
+- [ ] Informar o(s) nome(s) do(s) integrante(s) na apresentação.
+- [x] Apresentar a proposta: facilitar a descoberta de eventos de e-sports e a organização de partidas de interesse.
+- [ ] Explicitar o público-alvo e o contexto de utilização; esses pontos ainda precisam ser definidos para a apresentação.
+- [x] Demonstrar pelo menos quatro interfaces e suas finalidades:
+  - Início: destaques e próximas partidas.
+  - Explorar: busca e filtros de eventos.
+  - Detalhes da partida: informações, estado e horários.
+  - Painel: preferências do usuário e “Minha agenda”.
+- [x] Apresentar uma interface visual de alta fidelidade, com identidade visual, componentes e layout responsivo.
+- [x] Demonstrar percursos de utilização, como explorar eventos, abrir uma partida, ativar um lembrete e encontrá-lo em “Minha agenda”.
+- [x] Demonstrar funcionalidades interativas: navegação, busca, filtros, conta, preferências e lembretes.
+- [ ] Explicar na apresentação quais conceitos de IHC estudados fundamentaram as decisões de projeto.
+
+### Critérios de avaliação
+
+- [ ] Relacionar claramente a proposta às necessidades do público-alvo definido.
+- [x] Organizar as informações com hierarquia visual, títulos e componentes de interface.
+- [x] Manter padrões visuais e rótulos consistentes entre as telas.
+- [x] Permitir navegação entre as telas e retorno aos conteúdos.
+- [x] Fornecer feedback de ações e erros, por exemplo, com mensagens na interface para operações e falhas de conta ou salvamento.
+- [x] Aplicar práticas de usabilidade e acessibilidade, como foco visível, rótulos acessíveis, feedback anunciado, layout responsivo e respeito à preferência por movimento reduzido.
+- [x] Ter funcionalidades interativas implementadas e demonstráveis.
+- [ ] Preparar a apresentação oral para justificar as decisões de projeto e responder às perguntas do professor.
+- [ ] Explicitar como o projeto considera as necessidades dos usuários, a organização da interface e a qualidade da interação.
+
+> **Nota para a demonstração:** eventos, estatísticas e transmissões são fictícios. Os lembretes são organizados no protótipo, mas não enviam notificações reais.
 
 ## Identidade visual
 
